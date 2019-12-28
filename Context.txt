@@ -24,21 +24,6 @@ You will receive the same instances
 	#Activity Context
 Activity Context works with life-cycle of the Activity and disappears with the onDestroy()
 
-	#BroadcastReceiver
-It did not inherit Context itself
-When onReceive(), you can import Context, where Context is ReceiverRestricterContext
-And, two functions, registerReceiver() and binndService() cannot be used.
-Each time the receiver processes the broadcast, a new Context is created.
-
-	#ContextProvider
-It did not inherit Context itself
-After access, Context can be imported through getContext().
-
-	#Context refer
-LoginActivity.this refers to its own class that inherits Activity, but Activity also inherits Context class, so it can be used to provide activity context.
-getApplication() refers to the application object, but Application class inherits the Context class, which can be used to provide application content.
-getApplicationContext() provides acpplication context
-getBaseContext() provides activity context.
 
 
 
