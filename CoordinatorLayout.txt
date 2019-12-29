@@ -1,0 +1,44 @@
+https://blog.kmshack.kr/CoordinatorLayout%EA%B3%BC-Behavior%EC%9D%98-%EA%B4%80%EA%B3%84/
+http://areemak.blogspot.com/2018/04/blog-post.html
+
+<CoordinatorLayout
+	<AppBarLayout
+		<CollapsingToolbarLayout
+			<Toolbar
+			>	
+		>
+	>
+	<NestedScrollView
+		<RecyclerView	
+		>
+	>
+>
+	#The Role of CoordinatorLayout and the Relationship of the Behavior
+CoordinatorLayout is responsible for communicating the state of the scroll change in child views to other child views.
+Namely, you cna determine the status of the NestedScrollView or RecyclerView to register the Behavior in View to make the defined response.
+
+AppBarLayout reacts according to NestedScrollView's response.
+CoordinatorLyaout serves to pass the scroll information to the layout defined in the layout_behavior when nestedScrollView scrolling.
+Scrolling CoordinatorLayout is delivered via the NestedScrollingParent implemented in the Behavior.
+
+	#app:layout_scrollFlags(CollapsingToolbarLayout)
+"enterAlways"
+moves down, AppbarLayout completely disappears and then upward moves the scroll, the entire AppbarLayer is visible.
+"enterAlwaysCollapsed"
+moves the scroll down, if the AppbarLayout disappears competely and then moves the scroll upward, the Toolbar will only go down by minHeight
+and when the scroll reaches the top, the entire rest of the Appbar will come down.
+it should be noted that it should be used in combination with enterAlways
+"exitUntilCollapsed"
+is shown only as much as the minHeight of the Toolbar when ths scroll moves down and up, and the entire rest of the Appbar will come down
+when the scroll reaches the top.
+AppbarLayout dosen't disappear completely even if you scroll up.
+"snap"
+is a flag that attaches to the top and bottom based on half the size of the AppbarLayout.
+
+
+
+
+
+
+
+
