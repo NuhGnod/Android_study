@@ -19,4 +19,24 @@ When used with CoordinatorLayout, you can define anchor.
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_dialog_email" />
 >
+This code is shown in the following picture.
+<Image1>
 
+ <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_email"
+        app:layout_anchor="@id/frameLayout"
+        app:layout_anchorGravity="right|bottom"
+/>
+This code is Shown in the following picture
+<Image2>
+
+app : layout_anchor and app : layout_anchorGravity were added inside the FAB.
+These attributes are held by CoordinatorLayout.
+
+The point is that FAB have nothing to do with the gravity of their own widgets.
+Move to the anchorGravity at the point of id of the anchor.
+CoordinatorLayout is responsible for determining the anchor point, so other widgets can also set the anchor.
