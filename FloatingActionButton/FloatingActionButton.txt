@@ -1,0 +1,22 @@
+출처 : https://mommoo.tistory.com/39
+
+	#FloatingActionButton(FAB)
+The FAB is a floating UI to differentiate itself from other views.
+FAB can have an animated feature from a certain point.
+It should be used with CoordinatorLayout.
+When used with CoordinatorLayout, you can define anchor.
+
+<CoordinatorLayout
+	<AppBarLayout
+		<Toolbar>
+	>
+	<FrameLayout>
+	<android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_email" />
+>
+
