@@ -1,0 +1,96 @@
+https://coding-factory.tistory.com/203
+
+	#Transferring data between screens
+MainActivity.class
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button sub = (Button)findViewById(R.id.sub);
+
+        sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] array = {"홍길순","김춘추","김유신"}; /*송신 할 배열*/
+                Option option = new Option("010xxxxxxxx","서울특별시xxxx"); /*송신 할 클래스*/
+
+                Intent intent = new Intent(getApplicationContext(), SubActivity.class);
+
+                intent.putExtra("name","홍길동"); /*송신*/
+                intent.putExtra("age",20);
+                intent.putExtra("array",array);
+                intent.putExtra("class",option);
+
+                startActivity(intent);
+            }
+        });
+    }
+}
+SubActivity.class
+public class SubActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sub);
+
+        TextView tx1 = (TextView)findViewById(R.id.textView1); /*TextView선언*/
+        TextView tx2 = (TextView)findViewById(R.id.textView2);
+        TextView tx3 = (TextView)findViewById(R.id.textView3);
+        TextView tx4 = (TextView)findViewById(R.id.textView4);
+        TextView tx5 = (TextView)findViewById(R.id.textView5);
+
+        Intent intent = getIntent(); /*데이터 수신*/
+
+        String name = intent.getExtras().getString("name"); /*String형*/
+        tx1.setText(name);
+
+        int age = intent.getExtras().getInt("age"); /*int형*/
+        tx2.setText(String.valueOf(age));
+
+        String array[] = intent.getExtras().getStringArray("array"); /*배열*/
+        String add_array="";
+        for(int i=0;i<array.length;i++){
+            add_array+=array[i]+",";
+        }
+        tx3.setText(add_array);
+
+        Option option = (Option)intent.getSerializableExtra("class"); /*클래스*/
+        tx4.setText(option.getPhone());
+        tx5.setText(option.getAddr());
+
+    }
+}
+Option.class
+public class Option implements Serializable{
+
+    String phone;
+    String addr;
+
+    public Option(){
+
+    }
+    public Option(String phone, String addr){
+        this.phone = phone;
+        this.addr = addr;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+}
