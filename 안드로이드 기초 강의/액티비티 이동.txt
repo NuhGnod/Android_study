@@ -1,0 +1,23 @@
+텍스트 입력 감지 리스너를 통해 로그인 시키고 액티비티 이동
+TextInputEditText.addTextChangedListener(new TextWatcher() {
+
+@override
+beforeTextChanged
+
+onTextChanged
+
+afterTextChanged
+~~
+}
+
+login.setOnClickListener(new View.OnClickListener() {
+@override
+public void onClick(View v) {
+	String email = TextInputEditText_email.getText().toString();
+	~~
+	Intent intent = new Intent(MainActivity.this, LoginResultActivity.class);
+	intent.putExtra("email, email);
+	~~
+	startActivity(intent);
+	}
+}
